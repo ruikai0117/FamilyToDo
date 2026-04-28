@@ -1,0 +1,114 @@
+/* pages/todo-detail/index.wxss */
+
+.page-detail {
+  min-height: 100vh;
+  background: var(--bg-secondary);
+  padding-bottom: 160rpx;
+}
+
+.detail-card {
+  background: var(--bg-primary);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  margin: var(--spacing-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.divider {
+  height: 1rpx;
+  background: var(--divider-color);
+  margin: var(--spacing-md) 0;
+}
+
+/* 优先级选择 */
+.priority-select {
+  gap: var(--spacing-sm);
+}
+
+.priority-option {
+  display: flex;
+  align-items: center;
+  gap: 6rpx;
+  padding: 8rpx 16rpx;
+  border-radius: var(--radius-full);
+  background: var(--bg-secondary);
+  font-size: var(--font-xs);
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+}
+
+.priority-option.priority-active {
+  background: rgba(0, 122, 255, 0.1);
+  color: var(--primary);
+}
+
+.priority-dot {
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: var(--radius-full);
+}
+
+/* 成员选择器 */
+.member-picker {
+  padding: var(--spacing-lg) 0;
+}
+
+.picker-header {
+  padding: 0 var(--spacing-lg) var(--spacing-md);
+}
+
+.picker-title {
+  font-size: var(--font-lg);
+  font-weight: 600;
+}
+
+.member-list {
+  padding: 0 var(--spacing-lg);
+}
+
+.member-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md) 0;
+  border-bottom: 1rpx solid var(--divider-color);
+}
+
+.member-item:last-child {
+  border-bottom: none;
+}
+
+.member-item.member-active {
+  color: var(--primary);
+}
+
+.member-name {
+  flex: 1;
+  font-size: var(--font-md);
+}
+
+/* 底部操作 */
+.bottom-actions {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: var(--bg-primary);
+  box-shadow: 0 -2rpx 8rpx rgba(0, 0, 0, 0.04);
+  z-index: 50;
+}
+
+.btn-save {
+  flex: 1;
+}
+
+.btn-delete {
+  flex-shrink: 0;
+}
+
+.cell-value {
+  color: var(--text-secondary);
+}

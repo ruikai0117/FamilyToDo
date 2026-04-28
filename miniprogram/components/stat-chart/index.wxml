@@ -1,0 +1,22 @@
+<!--components/stat-chart/index.wxml-->
+<view class="stat-chart">
+  <!-- 图例 -->
+  <view class="chart-legend" wx:if="{{type === 'pie' && data.length > 0}}">
+    <view
+      wx:for="{{data}}"
+      wx:key="name"
+      class="legend-item"
+    >
+      <view class="legend-dot" style="background: {{item.color}}"></view>
+      <text class="legend-name">{{item.name}}</text>
+      <text class="legend-value">{{item.count || item.value}}</text>
+    </view>
+  </view>
+
+  <!-- 图表画布 -->
+  <canvas
+    class="chart-canvas"
+    type="2d"
+    style="width: 100%; height: {{height}}rpx;"
+  ></canvas>
+</view>

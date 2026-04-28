@@ -1,0 +1,33 @@
+<!--components/todo-card/index.wxml-->
+<view class="todo-card {{isCompleted ? 'todo-completed' : ''}} {{isOverdue ? 'todo-overdue' : ''}}" bindtap="onCardTap">
+  <!-- 优先级色条 -->
+  <view class="priority-bar priority-{{priorityInfo.key || 'none'}}"></view>
+
+  <!-- 勾选框 -->
+  <view class="check-box" data-id="{{item._id}}" bindtap="onToggleComplete">
+    <view class="check-circle {{isCompleted ? 'checked' : ''}}">
+      <van-icon wx:if="{{isCompleted}}" name="success" size="12px" color="#FFF" />
+    </view>
+  </view>
+
+  <!-- 内容区 -->
+  <view class="todo-content flex-1">
+    <view class="todo-title-row">
+      <text class="todo-title {{isCompleted ? 'text-tertiary line-through' : ''}}">{{item.title}}</text>
+    </view>
+    <view class="todo-meta flex-center" wx:if="{{item.dueDate || item.categoryId || item.assigneeId}}">
+      <!-- 分类色点 -->
+      <view wx:if="{{item.categoryColor}}" class="category-dot" style="background: {{item.categoryColor}}"></view>
+      <text wx:if="{{item.categoryName}}" class="meta-text">{{item.categoryName}}</text>
+      <!-- 时间 -->
+      <text wx:if="{{timeDesc}}" class="meta-text {{isOverdue ? 'text-danger' : ''}}">{{timeDesc}}</text>
+    </view>
+  </view>
+
+  <!-- 分配人头像 -->
+  <member-avatar
+    wx:if="{{item.assigneeInfo}}"
+    member="{{item.assigneeInfo}}"
+    size="sm"
+  />
+</view>

@@ -1,0 +1,147 @@
+/* pages/stats/index.wxss */
+
+.page-stats {
+  min-height: 100vh;
+  background: var(--bg-secondary);
+  padding: var(--spacing-md);
+  padding-bottom: calc(env(safe-area-inset-bottom) + 32rpx);
+}
+
+/* 概览卡片 */
+.overview-card {
+  background: linear-gradient(135deg, #FFFFFF 0%, #F8FAFF 100%);
+  border: 1rpx solid rgba(0, 122, 255, 0.08);
+}
+
+.overview-title {
+  font-size: var(--font-lg);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-lg);
+}
+
+.overview-grid {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: var(--spacing-lg);
+}
+
+.overview-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8rpx;
+}
+
+.overview-value {
+  font-size: var(--font-xxl);
+  font-weight: 700;
+}
+
+.overview-label {
+  font-size: var(--font-xs);
+  color: var(--text-secondary);
+}
+
+.overview-divider {
+  width: 1rpx;
+  height: 60rpx;
+  background: var(--divider-color);
+}
+
+/* 区块卡片 */
+.section-card {
+  margin-top: var(--spacing-md);
+}
+
+.section-title {
+  font-size: var(--font-lg);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-md);
+}
+
+/* 成员排行 */
+.rank-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-sm) 0;
+}
+
+.rank-left {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  flex: 1;
+}
+
+.rank-index {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: var(--radius-full);
+  background: var(--bg-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-xs);
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.rank-item:first-child .rank-index {
+  background: #FFD700;
+  color: #FFF;
+}
+
+.rank-item:nth-child(2) .rank-index {
+  background: #C0C0C0;
+  color: #FFF;
+}
+
+.rank-item:nth-child(3) .rank-index {
+  background: #CD7F32;
+  color: #FFF;
+}
+
+.rank-name {
+  font-size: var(--font-md);
+  color: var(--text-primary);
+}
+
+.rank-right {
+  display: flex;
+  align-items: center;
+  gap: 4rpx;
+  min-width: 200rpx;
+}
+
+.rank-count {
+  font-size: var(--font-md);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.rank-unit {
+  font-size: var(--font-xs);
+  color: var(--text-secondary);
+  margin-right: var(--spacing-sm);
+}
+
+.rank-progress {
+  flex: 1;
+  min-width: 80rpx;
+}
+
+/* 图表空状态 */
+.chart-empty {
+  padding: var(--spacing-xl) 0;
+}
+
+/* 加载 */
+.loading-wrap {
+  display: flex;
+  justify-content: center;
+  padding: var(--spacing-xl) 0;
+}

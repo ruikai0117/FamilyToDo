@@ -1,0 +1,57 @@
+<!--pages/member-manage/index.wxml-->
+<view class="page-member-manage">
+  <!-- 邀请栏 -->
+  <view class="invite-bar card flex-between" bindtap="onCopyInviteCode">
+    <view class="invite-info flex-center">
+      <van-icon name="friends-add-o" size="20px" color="#007AFF" />
+      <text class="invite-text">邀请新成员</text>
+    </view>
+    <van-icon name="arrow" size="14px" color="#86868B" />
+  </view>
+
+  <!-- 成员列表 -->
+  <view class="member-list card">
+    <view class="list-header">
+      <text class="list-title">全部成员 ({{members.length}})</text>
+    </view>
+    <view
+      wx:for="{{members}}"
+      wx:key="_id"
+      class="member-item"
+    >
+      <member-avatar member="{{item}}" />
+      <view class="member-info flex-1">
+        <view class="flex-center">
+          <text class="member-name">{{item.nickName}}</text>
+          <van-tag
+            wx:if="{{item.role === 'admin'}}"
+            type="primary"
+            size="medium"
+            round
+            custom-class="role-tag"
+          >管理员</van-tag>
+        </view>
+        <text class="member-stat">本周完成 {{item.weekCompleted || 0}} 项</text>
+      </view>
+      <!-- 管理员操作 -->
+      <view wx:if="{{isAdmin && item.role !== 'admin'}}" class="member-actions">
+        <van-icon
+          name="manager-o"
+          size="20px"
+          color="#007AFF"
+          data-id="{{item._id}}"
+          bindtap="onSetAdmin"
+        />
+        <van-icon
+          name="delete-o"
+          size="20px"
+          color="#FF3B30"
+          data-id="{{item._id}}"
+          data-name="{{item.nickName}}"
+          bindtap="onRemoveMember"
+          custom-class="ml-sm"
+        />
+      </view>
+    </view>
+  </view>
+</view>

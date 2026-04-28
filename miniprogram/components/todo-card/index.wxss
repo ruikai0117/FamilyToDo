@@ -1,0 +1,100 @@
+/* components/todo-card/index.wxss */
+
+.todo-card {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--spacing-sm);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease;
+}
+
+.todo-card:active {
+  box-shadow: var(--shadow-md);
+  transform: scale(0.99);
+}
+
+.todo-completed {
+  opacity: 0.7;
+}
+
+.todo-overdue {
+  border-left: 4rpx solid var(--danger);
+}
+
+/* 优先级色条 */
+.priority-bar {
+  width: 6rpx;
+  border-radius: 3rpx;
+  min-height: 40rpx;
+  flex-shrink: 0;
+}
+
+.priority-high { background: var(--danger); }
+.priority-medium { background: var(--warning); }
+.priority-low { background: var(--success); }
+.priority-none { background: var(--text-tertiary); }
+
+/* 勾选框 */
+.check-box {
+  flex-shrink: 0;
+  padding: 4rpx;
+}
+
+.check-circle {
+  width: 44rpx;
+  height: 44rpx;
+  border-radius: var(--radius-full);
+  border: 3rpx solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.check-circle.checked {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+/* 内容区 */
+.todo-content {
+  overflow: hidden;
+}
+
+.todo-title-row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.todo-title {
+  font-size: var(--font-md);
+  font-weight: 500;
+  color: var(--text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.line-through {
+  text-decoration: line-through;
+}
+
+.todo-meta {
+  gap: var(--spacing-sm);
+  margin-top: 4rpx;
+}
+
+.meta-text {
+  font-size: var(--font-xs);
+  color: var(--text-secondary);
+}
+
+.text-danger {
+  color: var(--danger);
+  font-weight: 500;
+}

@@ -1,0 +1,87 @@
+<!--pages/category/index.wxml-->
+<view class="page-category">
+  <!-- 搜索栏 -->
+  <view class="search-wrap">
+    <van-search
+      value="{{searchKeyword}}"
+      placeholder="搜索待办..."
+      shape="round"
+      bind:change="onSearch"
+    />
+  </view>
+
+  <!-- 分类网格 -->
+  <view class="category-grid">
+    <view
+      wx:for="{{filteredCategories}}"
+      wx:key="_id"
+      class="category-card card animate-scale-in"
+      data-id="{{item._id || item.name}}"
+      data-name="{{item.name}}"
+      data-index="{{index}}"
+      bindtap="onCategoryTap"
+      bindlongpress="onCategoryLongPress"
+    >
+      <view class="category-icon-wrap" style="background: {{item.color}}20">
+        <van-icon name="{{item.icon || 'label-o'}}" size="24px" color="{{item.color}}" />
+      </view>
+      <text class="category-name">{{item.name}}</text>
+      <view wx:if="{{item.count}}" class="category-badge">
+        <text>{{item.count}}</text>
+      </view>
+    </view>
+
+    <!-- 添加分类卡片 -->
+    <view class="category-card card category-add" bindtap="onAddCategory">
+      <view class="category-icon-wrap" style="background: #F5F5F7">
+        <van-icon name="plus" size="24px" color="#86868B" />
+      </view>
+      <text class="category-name text-secondary">添加分类</text>
+    </view>
+  </view>
+
+  <!-- 添加分类弹窗 -->
+  <van-popup
+    show="{{showAddCategory}}"
+    position="bottom"
+    round
+    bind:close="onAddClose"
+  >
+    <view class="add-category-popup">
+      <view class="popup-header flex-between">
+        <text class="popup-title">新建分类</text>
+        <van-icon name="cross" size="20px" color="#86868B" bindtap="onAddClose" />
+      </view>
+
+      <view class="popup-body">
+        <van-field
+          value="{{newCategoryName}}"
+          label="名称"
+          placeholder="输入分类名称"
+          border="{{true}}"
+          bind:change="onNewNameInput"
+        />
+
+        <view class="color-picker">
+          <text class="color-label">颜色</text>
+          <view class="color-list flex-wrap">
+            <view
+              wx:for="{{colorOptions}}"
+              wx:key="*this"
+              class="color-item {{newCategoryColor === item ? 'color-active' : ''}}"
+              style="background: {{item}}"
+              data-color="{{item}}"
+              bindtap="onColorSelect"
+            >
+              <van-icon wx:if="{{newCategoryColor === item}}" name="success" size="14px" color="#FFF" />
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="popup-footer safe-bottom">
+        <van-button type="primary" block round bindtap="onCategoryAddConfirm">确认添加</van-button>
+      </view>
+    </view>
+  </van-popup>
+</view>

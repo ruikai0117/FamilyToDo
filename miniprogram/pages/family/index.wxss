@@ -1,0 +1,204 @@
+/* pages/family/index.wxss */
+
+.page-family {
+  min-height: 100vh;
+  background: var(--bg-secondary);
+  padding: var(--spacing-md);
+  padding-bottom: calc(env(safe-area-inset-bottom) + 32rpx);
+}
+
+/* 家庭卡片 */
+.family-card {
+  background: linear-gradient(135deg, #FFFFFF 0%, #F0F5FF 100%);
+  border: 1rpx solid rgba(0, 122, 255, 0.1);
+}
+
+.family-header {
+  margin-bottom: var(--spacing-lg);
+}
+
+.family-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4rpx;
+}
+
+.family-name {
+  font-size: var(--font-xl);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.family-date {
+  font-size: var(--font-xs);
+  color: var(--text-secondary);
+}
+
+.invite-code-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  padding: 12rpx 20rpx;
+  background: rgba(0, 122, 255, 0.08);
+  border-radius: var(--radius-full);
+}
+
+.invite-label {
+  font-size: var(--font-xs);
+  color: var(--text-secondary);
+}
+
+.invite-code {
+  font-size: var(--font-md);
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: 2rpx;
+}
+
+/* 成员区域 */
+.member-section {
+  border-top: 1rpx solid var(--divider-color);
+  padding-top: var(--spacing-md);
+}
+
+.section-header {
+  margin-bottom: var(--spacing-md);
+}
+
+.section-title {
+  font-size: var(--font-md);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.section-action {
+  font-size: var(--font-sm);
+}
+
+.member-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+}
+
+.member-brief {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8rpx;
+  min-width: 120rpx;
+}
+
+.member-name {
+  font-size: var(--font-xs);
+  color: var(--text-primary);
+  text-align: center;
+  max-width: 120rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 无家庭 */
+.no-family {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--spacing-xl);
+  gap: var(--spacing-sm);
+}
+
+.no-family-text {
+  font-size: var(--font-lg);
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.no-family-hint {
+  font-size: var(--font-sm);
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+/* 操作卡片 */
+.action-card {
+  margin-top: var(--spacing-md);
+  padding: 0;
+  overflow: hidden;
+}
+
+/* 切换家庭 */
+.switch-card {
+  margin-top: var(--spacing-md);
+}
+
+.family-list {
+  margin-top: var(--spacing-sm);
+}
+
+.family-list-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  transition: background 0.2s ease;
+}
+
+.family-list-item:active {
+  background: var(--bg-secondary);
+}
+
+.family-list-item.family-active {
+  background: rgba(0, 122, 255, 0.06);
+}
+
+.family-list-icon {
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: var(--radius-md);
+  background: var(--bg-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.family-list-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4rpx;
+}
+
+.family-list-name {
+  font-size: var(--font-md);
+  font-weight: 500;
+}
+
+.family-list-members {
+  font-size: var(--font-xs);
+  color: var(--text-secondary);
+}
+
+/* 退出 */
+.leave-section {
+  margin-top: var(--spacing-xl);
+  padding: 0 var(--spacing-md);
+}
+
+/* 弹窗 */
+.popup-content {
+  padding: var(--spacing-lg);
+}
+
+.popup-header {
+  margin-bottom: var(--spacing-lg);
+}
+
+.popup-title {
+  font-size: var(--font-lg);
+  font-weight: 600;
+}
+
+.popup-footer {
+  padding-top: var(--spacing-lg);
+}

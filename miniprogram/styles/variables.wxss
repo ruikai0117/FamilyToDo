@@ -1,0 +1,45 @@
+/* ============================================
+   样式变量 - 家庭待办小程序
+   供各页面 @import 引用
+   ============================================ */
+
+/* 颜色变量 - 与 app.wxss 保持一致 */
+@primary: #007AFF;
+@primary-light: #5AC8FA;
+@primary-dark: #0051D5;
+@success: #34C759;
+@warning: #FF9500;
+@danger: #FF3B30;
+@purple: #5856D6;
+
+@bg-primary: #FFFFFF;
+@bg-secondary: #F5F5F7;
+@bg-tertiary: #FAFAFA;
+
+@text-primary: #1D1D1F;
+@text-secondary: #86868B;
+@text-tertiary: #AEAEB2;
+
+@border-color: #E5E5EA;
+@divider-color: #F2F2F7;
+
+/* 间距 */
+@spacing-xs: 8rpx;
+@spacing-sm: 16rpx;
+@spacing-md: 24rpx;
+@spacing-lg: 32rpx;
+@spacing-xl: 48rpx;
+
+/* 圆角 */
+@radius-sm: 8rpx;
+@radius-md: 16rpx;
+@radius-lg: 24rpx;
+@radius-xl: 32rpx;
+
+/* 字号 */
+@font-xs: 20rpx;
+@font-sm: 24rpx;
+@font-md: 28rpx;
+@font-lg: 32rpx;
+@font-xl: 36rpx;
+@font-xxl: 44rpx;

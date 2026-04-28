@@ -1,0 +1,16 @@
+<!--components/member-avatar/index.wxml-->
+<view class="avatar-wrap avatar-{{size}}">
+  <image
+    wx:if="{{member.avatarUrl}}"
+    class="avatar-image"
+    src="{{member.avatarUrl}}"
+    mode="aspectFill"
+  />
+  <view
+    wx:else
+    class="avatar-default"
+    style="background: {{defaultAvatar}}"
+  >
+    <text class="avatar-initial">{{initial}}</text>
+  </view>
+</view>

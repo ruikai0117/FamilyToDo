@@ -1,0 +1,6 @@
+<!--components/empty-state/index.wxml-->
+<view class="empty-state">
+  <van-icon name="{{config[type].icon}}" size="64px" color="#AEAEB2" />
+  <text class="empty-title">{{config[type].title}}</text>
+  <text class="empty-desc">{{config[type].desc}}</text>
+</view>

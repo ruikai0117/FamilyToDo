@@ -1,0 +1,92 @@
+<!--pages/stats/index.wxml-->
+<view class="page-stats">
+  <!-- 概览卡片 -->
+  <view class="overview-card card animate-slide-up">
+    <view class="overview-title">本周概览</view>
+    <view class="overview-grid">
+      <view class="overview-item">
+        <text class="overview-value text-accent">{{overview.weekCompleted}}</text>
+        <text class="overview-label">已完成</text>
+      </view>
+      <view class="overview-divider"></view>
+      <view class="overview-item">
+        <text class="overview-value text-warning">{{overview.totalPending}}</text>
+        <text class="overview-label">待完成</text>
+      </view>
+      <view class="overview-divider"></view>
+      <view class="overview-item">
+        <text class="overview-value text-success">{{overview.completionRate}}%</text>
+        <text class="overview-label">完成率</text>
+      </view>
+    </view>
+    <van-progress
+      percentage="{{overview.completionRate}}"
+      stroke-width="8"
+      color="#007AFF"
+      track-color="#F2F2F7"
+      show-pivot="{{false}}"
+    />
+  </view>
+
+  <!-- 成员贡献排行 -->
+  <view class="section-card card animate-slide-up" style="animation-delay: 0.1s">
+    <view class="section-title">成员贡献</view>
+    <view class="member-rank">
+      <view
+        wx:for="{{memberStats}}"
+        wx:key="_id"
+        class="rank-item"
+      >
+        <view class="rank-left">
+          <view class="rank-index">{{index + 1}}</view>
+          <member-avatar member="{{item}}" size="sm" />
+          <text class="rank-name">{{item.nickName}}</text>
+        </view>
+        <view class="rank-right">
+          <text class="rank-count">{{item.completedCount}}</text>
+          <text class="rank-unit">项</text>
+          <van-progress
+            percentage="{{item.percentage}}"
+            stroke-width="6"
+            color="{{item.color || '#007AFF'}}"
+            track-color="#F2F2F7"
+            show-pivot="{{false}}"
+            custom-class="rank-progress"
+          />
+        </view>
+      </view>
+    </view>
+    <van-empty wx:if="{{memberStats.length === 0}}" description="暂无数据" />
+  </view>
+
+  <!-- 分类分布 -->
+  <view class="section-card card animate-slide-up" style="animation-delay: 0.2s">
+    <view class="section-title">分类分布</view>
+    <stat-chart
+      wx:if="{{categoryStats.length > 0}}"
+      type="pie"
+      data="{{categoryStats}}"
+    />
+    <view wx:else class="chart-empty">
+      <van-empty description="暂无数据" />
+    </view>
+  </view>
+
+  <!-- 周趋势 -->
+  <view class="section-card card animate-slide-up" style="animation-delay: 0.3s">
+    <view class="section-title">本周趋势</view>
+    <stat-chart
+      wx:if="{{weekTrend.length > 0}}"
+      type="line"
+      data="{{weekTrend}}"
+    />
+    <view wx:else class="chart-empty">
+      <van-empty description="暂无数据" />
+    </view>
+  </view>
+
+  <!-- 加载状态 -->
+  <view wx:if="{{loading}}" class="loading-wrap">
+    <van-loading size="24px" vertical>加载中...</van-loading>
+  </view>
+</view>

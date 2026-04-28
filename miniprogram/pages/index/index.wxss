@@ -1,0 +1,88 @@
+/* pages/index/index.wxss */
+
+.page-todo {
+  min-height: 100vh;
+  background: var(--bg-secondary);
+  padding-bottom: calc(env(safe-area-inset-bottom) + 120rpx);
+}
+
+/* 导航头部 */
+.nav-header {
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: var(--bg-primary);
+}
+
+.nav-family {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+}
+
+.family-name {
+  font-size: var(--font-xl);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* 筛选栏 */
+.filter-bar {
+  background: var(--bg-primary);
+  padding: 0 var(--spacing-lg) var(--spacing-md);
+  white-space: nowrap;
+}
+
+.filter-list {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.filter-item {
+  display: inline-flex;
+  align-items: center;
+  padding: 12rpx 28rpx;
+  border-radius: var(--radius-full);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  font-size: var(--font-sm);
+  font-weight: 500;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.filter-item.filter-active {
+  background: var(--primary);
+  color: var(--text-white);
+}
+
+/* 待办列表 */
+.todo-list {
+  padding: var(--spacing-md) var(--spacing-md) 0;
+}
+
+/* 左滑删除 */
+.swipe-delete {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 100%;
+  background: var(--danger);
+  color: var(--text-white);
+  font-size: var(--font-sm);
+  font-weight: 500;
+}
+
+/* 加载状态 */
+.loading-wrap {
+  display: flex;
+  justify-content: center;
+  padding: var(--spacing-xl) 0;
+}
+
+/* 没有更多 */
+.no-more {
+  text-align: center;
+  padding: var(--spacing-lg) 0;
+  color: var(--text-tertiary);
+  font-size: var(--font-xs);
+}

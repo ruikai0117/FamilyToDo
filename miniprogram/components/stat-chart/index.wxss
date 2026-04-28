@@ -1,0 +1,42 @@
+/* components/stat-chart/index.wxss */
+
+.stat-chart {
+  width: 100%;
+}
+
+.chart-canvas {
+  width: 100%;
+}
+
+.chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6rpx;
+  min-width: 45%;
+}
+
+.legend-dot {
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+}
+
+.legend-name {
+  font-size: var(--font-xs);
+  color: var(--text-secondary);
+  flex: 1;
+}
+
+.legend-value {
+  font-size: var(--font-xs);
+  font-weight: 600;
+  color: var(--text-primary);
+}

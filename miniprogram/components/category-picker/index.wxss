@@ -1,0 +1,51 @@
+/* components/category-picker/index.wxss */
+
+.category-picker {
+  padding: var(--spacing-lg) 0;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.picker-header {
+  padding: 0 var(--spacing-lg) var(--spacing-md);
+}
+
+.picker-title {
+  font-size: var(--font-lg);
+  font-weight: 600;
+}
+
+.picker-list {
+  padding: 0 var(--spacing-lg);
+}
+
+.picker-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md) 0;
+  border-bottom: 1rpx solid var(--divider-color);
+}
+
+.picker-item:last-child {
+  border-bottom: none;
+}
+
+.picker-item.picker-active {
+  color: var(--primary);
+}
+
+.picker-icon {
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.picker-name {
+  flex: 1;
+  font-size: var(--font-md);
+  font-weight: 500;
+}

@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "van-loading": "@vant/weapp/loading/index",
+    "van-empty": "@vant/weapp/empty/index",
+    "van-progress": "@vant/weapp/progress/index",
+    "member-avatar": "../../components/member-avatar/index",
+    "stat-chart": "../../components/stat-chart/index"
+  },
+  "navigationBarTitleText": "数据统计",
+  "enablePullDownRefresh": true
+}

@@ -1,0 +1,74 @@
+/* pages/member-manage/index.wxss */
+
+.page-member-manage {
+  min-height: 100vh;
+  background: var(--bg-secondary);
+  padding: var(--spacing-md);
+}
+
+.invite-bar {
+  padding: var(--spacing-md) var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
+}
+
+.invite-info {
+  gap: var(--spacing-sm);
+}
+
+.invite-text {
+  font-size: var(--font-md);
+  font-weight: 500;
+  color: var(--primary);
+}
+
+.member-list {
+  padding: var(--spacing-lg);
+}
+
+.list-header {
+  margin-bottom: var(--spacing-md);
+}
+
+.list-title {
+  font-size: var(--font-md);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.member-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md) 0;
+  border-bottom: 1rpx solid var(--divider-color);
+}
+
+.member-item:last-child {
+  border-bottom: none;
+}
+
+.member-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4rpx;
+}
+
+.member-name {
+  font-size: var(--font-md);
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.role-tag {
+  margin-left: 8rpx;
+}
+
+.member-stat {
+  font-size: var(--font-xs);
+  color: var(--text-secondary);
+}
+
+.member-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+}

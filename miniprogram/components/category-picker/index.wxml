@@ -1,0 +1,27 @@
+<!--components/category-picker/index.wxml-->
+<view class="category-picker">
+  <view class="picker-header flex-between">
+    <text class="picker-title">选择分类</text>
+    <van-icon name="cross" size="20px" color="#86868B" bindtap="onClose" />
+  </view>
+  <view class="picker-list">
+    <view
+      wx:for="{{categories}}"
+      wx:key="_id"
+      class="picker-item {{selected === (item._id || item.name) ? 'picker-active' : ''}}"
+      data-index="{{index}}"
+      bindtap="onSelect"
+    >
+      <view class="picker-icon" style="background: {{item.color}}20">
+        <van-icon name="{{item.icon || 'label-o'}}" size="20px" color="{{item.color}}" />
+      </view>
+      <text class="picker-name">{{item.name}}</text>
+      <van-icon
+        wx:if="{{selected === (item._id || item.name)}}"
+        name="success"
+        size="16px"
+        color="#007AFF"
+      />
+    </view>
+  </view>
+</view>

@@ -1,0 +1,191 @@
+<!--pages/todo-detail/index.wxml-->
+<view class="page-detail">
+  <!-- 标题输入 -->
+  <view class="detail-card">
+    <van-field
+      value="{{form.title}}"
+      placeholder="待办标题"
+      border="{{false}}"
+      custom-style="font-size: 36rpx; font-weight: 600; padding: 0;"
+      bind:change="onTitleInput"
+    />
+    <view class="divider"></view>
+    <van-field
+      value="{{form.description}}"
+      type="textarea"
+      placeholder="添加备注..."
+      border="{{false}}"
+      autosize="{{ { maxHeight: 200, minHeight: 60 } }}"
+      custom-style="font-size: 28rpx; padding: 0; color: #86868B;"
+      bind:change="onDescInput"
+    />
+  </view>
+
+  <!-- 属性设置 -->
+  <view class="detail-card">
+    <!-- 分类 -->
+    <van-cell
+      title="分类"
+      is-link
+      bindtap="onCategoryTap"
+      value-class="cell-value"
+    >
+      <view slot="default" class="flex-center">
+        <view wx:if="{{form.categoryId}}" class="category-dot mr-xs" style="background: {{categoryColor}}"></view>
+        <text>{{categoryName || '选择分类'}}</text>
+      </view>
+    </van-cell>
+
+    <!-- 优先级 -->
+    <van-cell title="优先级" border="{{false}}">
+      <view slot="default" class="priority-select flex">
+        <view
+          wx:for="{{priorityOptions}}"
+          wx:key="value"
+          class="priority-option {{form.priority === item.value ? 'priority-active' : ''}}"
+          data-value="{{item.value}}"
+          bindtap="onPrioritySelect"
+        >
+          <view class="priority-dot" style="background: {{item.color}}"></view>
+          <text>{{item.label}}</text>
+        </view>
+      </view>
+    </van-cell>
+
+    <!-- 截止日期 -->
+    <van-cell
+      title="截止日期"
+      is-link
+      bindtap="onDateTap"
+      value="{{form.dueDate || '选择日期'}}"
+      value-class="{{form.dueDate ? '' : 'text-tertiary'}}"
+    />
+
+    <!-- 提醒时间 -->
+    <van-cell
+      title="提醒时间"
+      is-link
+      bindtap="onTimeTap"
+      value="{{form.dueTime || '选择时间'}}"
+      value-class="{{form.dueTime ? '' : 'text-tertiary'}}"
+    />
+
+    <!-- 分配成员 -->
+    <van-cell
+      title="分配给"
+      is-link
+      bindtap="onMemberTap"
+    >
+      <view slot="default" class="flex-center">
+        <member-avatar
+          wx:if="{{form.assigneeId}}"
+          member="{{assigneeInfo}}"
+          size="sm"
+        />
+        <text class="ml-xs">{{assigneeName || '选择成员'}}</text>
+      </view>
+    </van-cell>
+
+    <!-- 提醒开关 -->
+    <van-cell title="到期提醒" border="{{false}}">
+      <van-switch
+        slot="default"
+        checked="{{form.enableReminder}}"
+        active-color="#007AFF"
+        bind:change="onReminderChange"
+      />
+    </van-cell>
+  </view>
+
+  <!-- 底部操作 -->
+  <view class="bottom-actions safe-bottom">
+    <van-button
+      wx:if="{{isEdit}}"
+      custom-class="btn-delete"
+      plain
+      type="danger"
+      size="small"
+      bindtap="onDelete"
+    >删除</van-button>
+    <van-button
+      custom-class="btn-save"
+      type="primary"
+      block
+      round
+      bindtap="onSave"
+    >{{isEdit ? '保存修改' : '创建待办'}}</van-button>
+  </view>
+
+  <!-- 分类选择弹窗 -->
+  <van-popup
+    show="{{showCategoryPicker}}"
+    position="bottom"
+    round
+    bind:close="onCategoryClose"
+  >
+    <category-picker
+      categories="{{categories}}"
+      selected="{{form.categoryId}}"
+      bind:confirm="onCategoryConfirm"
+      bind:close="onCategoryClose"
+    />
+  </van-popup>
+
+  <!-- 日期选择弹窗 -->
+  <van-popup
+    show="{{showDatePicker}}"
+    position="bottom"
+    round
+    bind:close="onDateClose"
+  >
+    <van-datetime-picker
+      type="date"
+      value="{{currentDate}}"
+      min-date="{{minDate}}"
+      bind:confirm="onDateConfirm"
+      bind:cancel="onDateClose"
+    />
+  </van-popup>
+
+  <!-- 时间选择弹窗 -->
+  <van-popup
+    show="{{showTimePicker}}"
+    position="bottom"
+    round
+    bind:close="onTimeClose"
+  >
+    <van-datetime-picker
+      type="time"
+      value="{{currentTime}}"
+      bind:confirm="onTimeConfirm"
+      bind:cancel="onTimeClose"
+    />
+  </van-popup>
+
+  <!-- 成员选择弹窗 -->
+  <van-popup
+    show="{{showMemberPicker}}"
+    position="bottom"
+    round
+    bind:close="onMemberClose"
+  >
+    <view class="member-picker">
+      <view class="picker-header">
+        <text class="picker-title">分配给</text>
+      </view>
+      <view class="member-list">
+        <view
+          wx:for="{{members}}"
+          wx:key="_id"
+          class="member-item {{form.assigneeId === item._id ? 'member-active' : ''}}"
+          data-id="{{item._id}}"
+          bindtap="onMemberSelect"
+        >
+          <member-avatar member="{{item}}" size="sm" />
+          <text class="member-name">{{item.nickName}}</text>
+          <van-icon wx:if="{{form.assigneeId === item._id}}" name="success" color="#007AFF" />
+        </view>
+      </view>
+    </view>
+  </van-popup>
+</view>
