@@ -1,8 +1,10 @@
 <!--pages/stats/index.wxml-->
 <view class="page-stats">
   <!-- 概览卡片 -->
-  <view class="overview-card card animate-slide-up">
-    <view class="overview-title">本周概览</view>
+  <view class="overview-card">
+    <view class="overview-header">
+      <text class="overview-title">本周概览</text>
+    </view>
     <view class="overview-grid">
       <view class="overview-item">
         <text class="overview-value text-accent">{{overview.weekCompleted}}</text>
@@ -21,16 +23,17 @@
     </view>
     <van-progress
       percentage="{{overview.completionRate}}"
-      stroke-width="8"
-      color="#007AFF"
-      track-color="#F2F2F7"
+      stroke-width="6"
+      color="#0071E3"
+      track-color="#F0F0F3"
       show-pivot="{{false}}"
+      custom-class="overview-progress"
     />
   </view>
 
   <!-- 成员贡献排行 -->
-  <view class="section-card card animate-slide-up" style="animation-delay: 0.1s">
-    <view class="section-title">成员贡献</view>
+  <view class="section-card">
+    <text class="section-title">成员贡献</text>
     <view class="member-rank">
       <view
         wx:for="{{memberStats}}"
@@ -38,7 +41,7 @@
         class="rank-item"
       >
         <view class="rank-left">
-          <view class="rank-index">{{index + 1}}</view>
+          <view class="rank-index {{'rank-index-' + (index + 1)}}">{{index + 1}}</view>
           <member-avatar member="{{item}}" size="sm" />
           <text class="rank-name">{{item.nickName}}</text>
         </view>
@@ -47,9 +50,9 @@
           <text class="rank-unit">项</text>
           <van-progress
             percentage="{{item.percentage}}"
-            stroke-width="6"
-            color="{{item.color || '#007AFF'}}"
-            track-color="#F2F2F7"
+            stroke-width="4"
+            color="{{item.color || '#0071E3'}}"
+            track-color="#F0F0F3"
             show-pivot="{{false}}"
             custom-class="rank-progress"
           />
@@ -60,8 +63,8 @@
   </view>
 
   <!-- 分类分布 -->
-  <view class="section-card card animate-slide-up" style="animation-delay: 0.2s">
-    <view class="section-title">分类分布</view>
+  <view class="section-card">
+    <text class="section-title">分类分布</text>
     <stat-chart
       wx:if="{{categoryStats.length > 0}}"
       type="pie"
@@ -73,8 +76,8 @@
   </view>
 
   <!-- 周趋势 -->
-  <view class="section-card card animate-slide-up" style="animation-delay: 0.3s">
-    <view class="section-title">本周趋势</view>
+  <view class="section-card">
+    <text class="section-title">本周趋势</text>
     <stat-chart
       wx:if="{{weekTrend.length > 0}}"
       type="line"
@@ -87,6 +90,6 @@
 
   <!-- 加载状态 -->
   <view wx:if="{{loading}}" class="loading-wrap">
-    <van-loading size="24px" vertical>加载中...</van-loading>
+    <van-loading size="18px" color="#8E8E93" />
   </view>
 </view>

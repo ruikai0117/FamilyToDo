@@ -1,4 +1,4 @@
-/* pages/category/index.wxss */
+/* pages/category/index.wxss — 简约优化 */
 
 .page-category {
   min-height: 100vh;
@@ -6,11 +6,10 @@
 }
 
 .search-wrap {
-  padding: var(--spacing-sm) var(--spacing-md);
   background: var(--bg-primary);
 }
 
-/* 分类网格 */
+/* ===== 分类网格 ===== */
 .category-grid {
   display: flex;
   flex-wrap: wrap;
@@ -18,22 +17,29 @@
   gap: var(--spacing-md);
 }
 
-.category-card {
+.category-item {
   width: calc(50% - var(--spacing-md) / 2);
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: var(--spacing-lg) var(--spacing-md);
   position: relative;
+  background: var(--bg-card);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.15s ease;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-sizing: border-box;
 }
 
-.category-card:active {
-  transform: scale(0.97);
+.category-item:active {
+  transform: scale(0.96);
 }
 
 .category-icon-wrap {
-  width: 96rpx;
-  height: 96rpx;
+  width: 88rpx;
+  height: 88rpx;
   border-radius: var(--radius-lg);
   display: flex;
   align-items: center;
@@ -42,7 +48,7 @@
 }
 
 .category-name {
-  font-size: var(--font-sm);
+  font-size: 22rpx;
   font-weight: 500;
   color: var(--text-primary);
   text-align: center;
@@ -50,26 +56,29 @@
 
 .category-badge {
   position: absolute;
-  top: var(--spacing-sm);
-  right: var(--spacing-sm);
-  min-width: 36rpx;
-  height: 36rpx;
+  top: var(--spacing-xs);
+  right: var(--spacing-xs);
+  min-width: 32rpx;
+  height: 32rpx;
   border-radius: var(--radius-full);
   background: var(--danger);
   color: var(--text-white);
-  font-size: var(--font-xs);
+  font-size: 18rpx;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 8rpx;
+  padding: 0 6rpx;
 }
 
 .category-add {
   border: 2rpx dashed var(--border-color);
   box-shadow: none;
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 
-/* 添加分类弹窗 */
+/* ===== 添加分类弹窗 ===== */
 .add-category-popup {
   padding: var(--spacing-lg);
 }
@@ -79,8 +88,9 @@
 }
 
 .popup-title {
-  font-size: var(--font-lg);
+  font-size: 34rpx;
   font-weight: 600;
+  letter-spacing: -0.3rpx;
 }
 
 .popup-body {
@@ -89,7 +99,7 @@
 
 /* 颜色选择 */
 .color-picker {
-  padding: var(--spacing-md) var(--spacing-sm);
+  padding: var(--spacing-md) 0;
 }
 
 .color-label {
@@ -97,26 +107,33 @@
   color: var(--text-primary);
   margin-bottom: var(--spacing-sm);
   display: block;
+  font-weight: 500;
 }
 
 .color-list {
+  display: flex;
+  flex-wrap: wrap;
   gap: var(--spacing-sm);
   margin-top: var(--spacing-sm);
 }
 
 .color-item {
-  width: 64rpx;
-  height: 64rpx;
+  width: 60rpx;
+  height: 60rpx;
   border-radius: var(--radius-full);
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+.color-item:active {
+  transform: scale(0.9);
 }
 
 .color-item.color-active {
   transform: scale(1.15);
-  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.2);
 }
 
 .popup-footer {

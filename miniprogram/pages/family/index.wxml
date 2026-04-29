@@ -1,23 +1,22 @@
 <!--pages/family/index.wxml-->
 <view class="page-family">
   <!-- 家庭信息卡片 -->
-  <view class="family-card card animate-slide-up" wx:if="{{currentFamily}}">
+  <view class="family-card" wx:if="{{currentFamily}}">
     <view class="family-header flex-between">
       <view class="family-info">
         <text class="family-name">{{currentFamily.name}}</text>
         <text class="family-date">创建于 {{currentFamily.createTime}}</text>
       </view>
       <view class="invite-code-wrap" bindtap="onCopyInviteCode">
-        <text class="invite-label">邀请码</text>
         <text class="invite-code">{{currentFamily.inviteCode}}</text>
-        <van-icon name="edit" size="12px" color="#007AFF" custom-class="copy-icon" />
+        <van-icon name="edit" size="11px" color="#0071E3" custom-class="copy-icon" />
       </view>
     </view>
 
     <!-- 成员列表 -->
     <view class="member-section">
       <view class="section-header flex-between">
-        <text class="section-title">家庭成员 ({{members.length}})</text>
+        <text class="section-title">家庭成员 · {{members.length}}</text>
         <text class="section-action text-accent" bindtap="onManageMembers">管理</text>
       </view>
       <view class="member-row">
@@ -29,6 +28,7 @@
             type="primary"
             size="medium"
             round
+            custom-class="admin-tag"
           >管理员</van-tag>
         </view>
       </view>
@@ -36,33 +36,35 @@
   </view>
 
   <!-- 无家庭提示 -->
-  <view class="no-family card" wx:if="{{!currentFamily}}">
-    <van-icon name="home-o" size="48px" color="#AEAEB2" />
-    <text class="no-family-text">你还没有加入家庭</text>
+  <view class="no-family" wx:if="{{!currentFamily}}">
+    <van-icon name="home-o" size="48px" color="#C7C7CC" />
+    <text class="no-family-text">还没有加入家庭</text>
     <text class="no-family-hint">创建或加入一个家庭，开始协作管理待办</text>
   </view>
 
   <!-- 快捷操作 -->
-  <view class="action-card card">
-    <van-cell-group border="{{false}}">
+  <view class="action-card">
+    <van-cell-group border="{{false}}" custom-class="action-group">
       <van-cell
         title="创建家庭"
         icon="add-o"
         is-link
         bindtap="onCreateFamily"
+        custom-class="action-cell"
       />
       <van-cell
         title="加入家庭"
         icon="friends-o"
         is-link
         bindtap="onJoinFamily"
+        custom-class="action-cell"
       />
     </van-cell-group>
   </view>
 
   <!-- 多家庭切换 -->
-  <view class="switch-card card" wx:if="{{familyList.length > 1}}">
-    <view class="section-title">切换家庭</view>
+  <view class="switch-section" wx:if="{{familyList.length > 1}}">
+    <text class="section-title">切换家庭</text>
     <view class="family-list">
       <view
         wx:for="{{familyList}}"
@@ -72,13 +74,13 @@
         bindtap="onSwitchFamily"
       >
         <view class="family-list-icon">
-          <van-icon name="home-o" size="20px" />
+          <van-icon name="home-o" size="18px" color="#0071E3" />
         </view>
         <view class="family-list-info flex-1">
           <text class="family-list-name">{{item.name}}</text>
           <text class="family-list-members">{{item.memberCount}} 位成员</text>
         </view>
-        <van-icon wx:if="{{item._id === currentFamily._id}}" name="success" color="#007AFF" />
+        <van-icon wx:if="{{item._id === currentFamily._id}}" name="success" color="#0071E3" size="16px" />
       </view>
     </view>
   </view>
@@ -91,6 +93,7 @@
       block
       round
       bindtap="onLeaveFamily"
+      custom-class="leave-btn"
     >退出家庭</van-button>
   </view>
 
@@ -104,7 +107,7 @@
     <view class="popup-content">
       <view class="popup-header flex-between">
         <text class="popup-title">创建家庭</text>
-        <van-icon name="cross" size="20px" color="#86868B" bindtap="onCreateClose" />
+        <van-icon name="cross" size="20px" color="#8E8E93" bindtap="onCreateClose" />
       </view>
       <van-field
         value="{{newFamilyName}}"
@@ -131,12 +134,12 @@
     <view class="popup-content">
       <view class="popup-header flex-between">
         <text class="popup-title">加入家庭</text>
-        <van-icon name="cross" size="20px" color="#86868B" bindtap="onJoinClose" />
+        <van-icon name="cross" size="20px" color="#8E8E93" bindtap="onJoinClose" />
       </view>
       <van-field
         value="{{inviteCode}}"
         label="邀请码"
-        placeholder="输入6位邀请码"
+        placeholder="输入 6 位邀请码"
         border="{{true}}"
         maxlength="6"
         bind:change="onInviteCodeInput"

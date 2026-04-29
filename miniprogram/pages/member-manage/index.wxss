@@ -1,4 +1,4 @@
-/* pages/member-manage/index.wxss */
+/* pages/member-manage/index.wxss — 简约优化 */
 
 .page-member-manage {
   min-height: 100vh;
@@ -6,9 +6,23 @@
   padding: var(--spacing-md);
 }
 
+/* ===== 邀请栏 ===== */
 .invite-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: var(--spacing-md) var(--spacing-lg);
+  background: var(--bg-card);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
   margin-bottom: var(--spacing-md);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: transform 0.15s ease;
+}
+
+.invite-bar:active {
+  transform: scale(0.98);
 }
 
 .invite-info {
@@ -21,15 +35,21 @@
   color: var(--primary);
 }
 
-.member-list {
+/* ===== 成员列表 ===== */
+.member-section {
+  background: var(--bg-card);
+  border-radius: var(--radius-xl);
   padding: var(--spacing-lg);
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
-.list-header {
-  margin-bottom: var(--spacing-md);
+.member-header {
+  margin-bottom: var(--spacing-sm);
 }
 
-.list-title {
+.member-header-title {
   font-size: var(--font-md);
   font-weight: 600;
   color: var(--text-primary);
@@ -50,7 +70,14 @@
 .member-info {
   display: flex;
   flex-direction: column;
-  gap: 4rpx;
+  gap: 2rpx;
+  min-width: 0;
+}
+
+.member-name-row {
+  display: flex;
+  align-items: center;
+  gap: 6rpx;
 }
 
 .member-name {
@@ -60,15 +87,19 @@
 }
 
 .role-tag {
-  margin-left: 8rpx;
+  font-size: 18rpx !important;
+  padding: 2rpx 10rpx !important;
+  transform: scale(0.85);
 }
 
 .member-stat {
-  font-size: var(--font-xs);
+  font-size: 22rpx;
   color: var(--text-secondary);
 }
 
 .member-actions {
   display: flex;
-  gap: var(--spacing-sm);
+  align-items: center;
+  gap: var(--spacing-md);
+  flex-shrink: 0;
 }

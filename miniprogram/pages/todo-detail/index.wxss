@@ -1,4 +1,4 @@
-/* pages/todo-detail/index.wxss */
+/* pages/todo-detail/index.wxss — 简约优化 */
 
 .page-detail {
   min-height: 100vh;
@@ -6,22 +6,46 @@
   padding-bottom: 160rpx;
 }
 
+/* ===== 详情卡片 ===== */
 .detail-card {
-  background: var(--bg-primary);
-  border-radius: var(--radius-lg);
+  background: var(--bg-card);
+  border-radius: var(--radius-xl);
   padding: var(--spacing-lg);
   margin: var(--spacing-md);
   box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.detail-card + .detail-card {
+  margin-top: 0;
 }
 
 .divider {
   height: 1rpx;
   background: var(--divider-color);
-  margin: var(--spacing-md) 0;
+  margin: var(--spacing-sm) 0;
 }
 
-/* 优先级选择 */
+/* ===== Vant Cell 样式覆盖 ===== */
+.detail-cell {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.detail-cell .van-cell__title {
+  color: var(--text-primary) !important;
+  font-size: var(--font-md) !important;
+}
+
+.detail-cell .van-cell__value {
+  color: var(--text-secondary) !important;
+  font-size: var(--font-sm) !important;
+}
+
+/* ===== 优先级选择 ===== */
 .priority-select {
+  display: flex;
   gap: var(--spacing-sm);
 }
 
@@ -29,26 +53,32 @@
   display: flex;
   align-items: center;
   gap: 6rpx;
-  padding: 8rpx 16rpx;
+  padding: 8rpx 18rpx;
   border-radius: var(--radius-full);
   background: var(--bg-secondary);
-  font-size: var(--font-xs);
+  font-size: 22rpx;
   color: var(--text-secondary);
   transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.priority-option:active {
+  opacity: 0.7;
 }
 
 .priority-option.priority-active {
-  background: rgba(0, 122, 255, 0.1);
+  background: var(--primary-bg);
   color: var(--primary);
+  font-weight: 500;
 }
 
 .priority-dot {
-  width: 16rpx;
-  height: 16rpx;
+  width: 14rpx;
+  height: 14rpx;
   border-radius: var(--radius-full);
 }
 
-/* 成员选择器 */
+/* ===== 成员选择器 ===== */
 .member-picker {
   padding: var(--spacing-lg) 0;
 }
@@ -58,8 +88,9 @@
 }
 
 .picker-title {
-  font-size: var(--font-lg);
+  font-size: 34rpx;
   font-weight: 600;
+  letter-spacing: -0.3rpx;
 }
 
 .member-list {
@@ -78,6 +109,13 @@
   border-bottom: none;
 }
 
+.member-item:active {
+  background: var(--bg-tertiary);
+  margin: 0 calc(-1 * var(--spacing-lg));
+  padding-left: var(--spacing-lg);
+  padding-right: var(--spacing-lg);
+}
+
 .member-item.member-active {
   color: var(--primary);
 }
@@ -85,9 +123,10 @@
 .member-name {
   flex: 1;
   font-size: var(--font-md);
+  font-weight: 500;
 }
 
-/* 底部操作 */
+/* ===== 底部操作栏 ===== */
 .bottom-actions {
   position: fixed;
   bottom: 0;
@@ -96,8 +135,11 @@
   display: flex;
   gap: var(--spacing-md);
   padding: var(--spacing-md) var(--spacing-lg);
+  padding-bottom: calc(var(--spacing-md) + env(safe-area-inset-bottom));
   background: var(--bg-primary);
-  box-shadow: 0 -2rpx 8rpx rgba(0, 0, 0, 0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 -2rpx 12rpx rgba(0, 0, 0, 0.04);
   z-index: 50;
 }
 
@@ -105,10 +147,16 @@
   flex: 1;
 }
 
+.btn-save .van-button__text {
+  font-weight: 500;
+  letter-spacing: 1rpx;
+}
+
 .btn-delete {
   flex-shrink: 0;
 }
 
 .cell-value {
-  color: var(--text-secondary);
+  color: var(--text-secondary) !important;
+  font-size: var(--font-sm) !important;
 }

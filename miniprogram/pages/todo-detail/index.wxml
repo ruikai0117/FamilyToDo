@@ -1,12 +1,12 @@
 <!--pages/todo-detail/index.wxml-->
 <view class="page-detail">
-  <!-- 标题输入 -->
+  <!-- 标题与备注 -->
   <view class="detail-card">
     <van-field
       value="{{form.title}}"
       placeholder="待办标题"
       border="{{false}}"
-      custom-style="font-size: 36rpx; font-weight: 600; padding: 0;"
+      custom-style="font-size: 34rpx; font-weight: 600; padding: 0; letter-spacing: -0.3rpx;"
       bind:change="onTitleInput"
     />
     <view class="divider"></view>
@@ -16,7 +16,7 @@
       placeholder="添加备注..."
       border="{{false}}"
       autosize="{{ { maxHeight: 200, minHeight: 60 } }}"
-      custom-style="font-size: 28rpx; padding: 0; color: #86868B;"
+      custom-style="font-size: 26rpx; padding: 0; color: #8E8E93; line-height: 1.6;"
       bind:change="onDescInput"
     />
   </view>
@@ -29,16 +29,17 @@
       is-link
       bindtap="onCategoryTap"
       value-class="cell-value"
+      custom-class="detail-cell"
     >
       <view slot="default" class="flex-center">
         <view wx:if="{{form.categoryId}}" class="category-dot mr-xs" style="background: {{categoryColor}}"></view>
-        <text>{{categoryName || '选择分类'}}</text>
+        <text class="{{form.categoryId ? '' : 'text-tertiary'}}">{{categoryName || '选择分类'}}</text>
       </view>
     </van-cell>
 
     <!-- 优先级 -->
-    <van-cell title="优先级" border="{{false}}">
-      <view slot="default" class="priority-select flex">
+    <van-cell title="优先级" border="{{false}}" custom-class="detail-cell">
+      <view slot="default" class="priority-select">
         <view
           wx:for="{{priorityOptions}}"
           wx:key="value"
@@ -59,6 +60,7 @@
       bindtap="onDateTap"
       value="{{form.dueDate || '选择日期'}}"
       value-class="{{form.dueDate ? '' : 'text-tertiary'}}"
+      custom-class="detail-cell"
     />
 
     <!-- 提醒时间 -->
@@ -68,6 +70,7 @@
       bindtap="onTimeTap"
       value="{{form.dueTime || '选择时间'}}"
       value-class="{{form.dueTime ? '' : 'text-tertiary'}}"
+      custom-class="detail-cell"
     />
 
     <!-- 分配成员 -->
@@ -75,6 +78,7 @@
       title="分配给"
       is-link
       bindtap="onMemberTap"
+      custom-class="detail-cell"
     >
       <view slot="default" class="flex-center">
         <member-avatar
@@ -82,16 +86,16 @@
           member="{{assigneeInfo}}"
           size="sm"
         />
-        <text class="ml-xs">{{assigneeName || '选择成员'}}</text>
+        <text class="{{form.assigneeId ? '' : 'text-tertiary'}} ml-xs">{{assigneeName || '选择成员'}}</text>
       </view>
     </van-cell>
 
     <!-- 提醒开关 -->
-    <van-cell title="到期提醒" border="{{false}}">
+    <van-cell title="到期提醒" border="{{false}}" custom-class="detail-cell">
       <van-switch
         slot="default"
         checked="{{form.enableReminder}}"
-        active-color="#007AFF"
+        active-color="#0071E3"
         bind:change="onReminderChange"
       />
     </van-cell>
@@ -183,7 +187,7 @@
         >
           <member-avatar member="{{item}}" size="sm" />
           <text class="member-name">{{item.nickName}}</text>
-          <van-icon wx:if="{{form.assigneeId === item._id}}" name="success" color="#007AFF" />
+          <van-icon wx:if="{{form.assigneeId === item._id}}" name="success" color="#0071E3" size="16px" />
         </view>
       </view>
     </view>

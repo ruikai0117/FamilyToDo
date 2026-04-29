@@ -1,45 +1,52 @@
 /* ============================================
-   样式变量 - 家庭待办小程序
-   供各页面 @import 引用
+   样式变量 - 家庭待办小程序（简约优化版）
    ============================================ */
 
-/* 颜色变量 - 与 app.wxss 保持一致 */
-@primary: #007AFF;
-@primary-light: #5AC8FA;
-@primary-dark: #0051D5;
+/* 主色 - 柔和蓝 */
+@primary: #0071E3;
+@primary-light: #64B5F6;
+@primary-dark: #0050B3;
+@primary-bg: rgba(0, 113, 227, 0.06);
+
 @success: #34C759;
 @warning: #FF9500;
 @danger: #FF3B30;
-@purple: #5856D6;
 
+/* 中性色 - 更克制 */
 @bg-primary: #FFFFFF;
-@bg-secondary: #F5F5F7;
-@bg-tertiary: #FAFAFA;
+@bg-secondary: #F2F2F5;
+@bg-tertiary: #F8F8FA;
 
-@text-primary: #1D1D1F;
-@text-secondary: #86868B;
-@text-tertiary: #AEAEB2;
+@text-primary: #1C1C1E;
+@text-secondary: #8E8E93;
+@text-tertiary: #C7C7CC;
 
 @border-color: #E5E5EA;
-@divider-color: #F2F2F7;
+@divider-color: #F0F0F3;
 
-/* 间距 */
-@spacing-xs: 8rpx;
-@spacing-sm: 16rpx;
-@spacing-md: 24rpx;
-@spacing-lg: 32rpx;
-@spacing-xl: 48rpx;
+/* 阴影更柔和 */
+@shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.03);
+@shadow-md: 0 2px 8px rgba(0, 0, 0, 0.05);
+@shadow-lg: 0 4px 20px rgba(0, 0, 0, 0.08);
 
-/* 圆角 */
-@radius-sm: 8rpx;
-@radius-md: 16rpx;
-@radius-lg: 24rpx;
-@radius-xl: 32rpx;
+/* 间距 - 稍微收敛 */
+@spacing-xs: 6rpx;
+@spacing-sm: 12rpx;
+@spacing-md: 20rpx;
+@spacing-lg: 28rpx;
+@spacing-xl: 40rpx;
 
-/* 字号 */
+/* 圆角 - 更统一 */
+@radius-sm: 6rpx;
+@radius-md: 12rpx;
+@radius-lg: 18rpx;
+@radius-xl: 24rpx;
+@radius-full: 999rpx;
+
+/* 字号 - 微调 */
 @font-xs: 20rpx;
 @font-sm: 24rpx;
 @font-md: 28rpx;
 @font-lg: 32rpx;
 @font-xl: 36rpx;
-@font-xxl: 44rpx;
+@font-xxl: 42rpx;

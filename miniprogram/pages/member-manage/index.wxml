@@ -1,18 +1,18 @@
 <!--pages/member-manage/index.wxml-->
 <view class="page-member-manage">
   <!-- 邀请栏 -->
-  <view class="invite-bar card flex-between" bindtap="onCopyInviteCode">
+  <view class="invite-bar" bindtap="onCopyInviteCode">
     <view class="invite-info flex-center">
-      <van-icon name="friends-add-o" size="20px" color="#007AFF" />
+      <van-icon name="friends-add-o" size="18px" color="#0071E3" />
       <text class="invite-text">邀请新成员</text>
     </view>
-    <van-icon name="arrow" size="14px" color="#86868B" />
+    <van-icon name="arrow" size="12px" color="#8E8E93" />
   </view>
 
   <!-- 成员列表 -->
-  <view class="member-list card">
-    <view class="list-header">
-      <text class="list-title">全部成员 ({{members.length}})</text>
+  <view class="member-section">
+    <view class="member-header">
+      <text class="member-header-title">全部成员 · {{members.length}}</text>
     </view>
     <view
       wx:for="{{members}}"
@@ -21,7 +21,7 @@
     >
       <member-avatar member="{{item}}" />
       <view class="member-info flex-1">
-        <view class="flex-center">
+        <view class="member-name-row">
           <text class="member-name">{{item.nickName}}</text>
           <van-tag
             wx:if="{{item.role === 'admin'}}"
@@ -37,14 +37,14 @@
       <view wx:if="{{isAdmin && item.role !== 'admin'}}" class="member-actions">
         <van-icon
           name="manager-o"
-          size="20px"
-          color="#007AFF"
+          size="18px"
+          color="#0071E3"
           data-id="{{item._id}}"
           bindtap="onSetAdmin"
         />
         <van-icon
           name="delete-o"
-          size="20px"
+          size="18px"
           color="#FF3B30"
           data-id="{{item._id}}"
           data-name="{{item.nickName}}"
